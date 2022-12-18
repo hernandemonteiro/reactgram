@@ -1,7 +1,5 @@
 import multer from "multer";
-  // import GridFsStorage from "multer-gridfs-storage";
 import path from "path";
-// import methodOverride from "method-override";
 
 const imageStorage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -18,7 +16,6 @@ const imageStorage = multer.diskStorage({
     callback(null, Date.now() + path.extname(file.originalname));
   },
 });
-
 
 export const imageUpload = multer({
   storage: imageStorage,
