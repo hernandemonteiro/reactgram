@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import path from "path";
 import cors from "cors";
 
-import testRouter from "./routes/test";
 import userRouter from "./routes/user";
 
 dotenv.config();
@@ -27,7 +26,6 @@ class StartUp {
     this.app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
     // imported routes;
-    this.app.use("/api/test/", testRouter);
     this.app.use("/api/user/", userRouter);
   }
 }
