@@ -6,9 +6,9 @@ class PhotoController {
     const { title } = req.body;
     const image = req.file.filename;
 
-    console.log(req.body);
+    const reqUser = req.user;
 
-    res.send("photo insert")
+    res.send("photo insert");
   }
 }
 

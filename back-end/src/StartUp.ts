@@ -5,6 +5,7 @@ import path from "path";
 import cors from "cors";
 
 import userRouter from "./routes/user";
+import photoRoutes from "./routes/photo";
 
 dotenv.config();
 class StartUp {
@@ -27,6 +28,7 @@ class StartUp {
 
     // imported routes;
     this.app.use("/api/user/", userRouter);
+    this.app.use("/api/photos/", photoRoutes);
   }
 }
 
