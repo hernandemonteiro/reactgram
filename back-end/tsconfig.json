@@ -5,7 +5,8 @@
     "moduleResolution": "node",
     "strict": true,
     "target": "ESNext",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "strictNullChecks": false
   },
   "exclude": ["node_modules", ".env"]
 }
