@@ -36,25 +36,37 @@ class PhotoController {
     const photo = await PhotoRepository.findById(
       new mongoose.Types.ObjectId(id)
     );
+    try {
+      if (!photo) {
+        res.status(404).json({ errors: ["Foto não encontrada!"] });
+        return;
+      }
 
-    if (!photo) {
+      if (photo.userId != reqUser._id) {
+        res.status(422).json({
+          errors: ["Ocorreu um erro, por favor, tente novamente mais tarde!"],
+        });
+        return;
+      }
+
+      await PhotoRepository.findByIdAndDelete(photo._id);
+
+      res.status(200).json({
+        id: photo._id,
+        message: "Foto excluida com sucesso!",
+      });
+    } catch (error) {
       res.status(404).json({ errors: ["Foto não encontrada!"] });
       return;
     }
+  }
 
-    if (photo.userId != reqUser._id) {
-      res.status(422).json({
-        errors: ["Ocorreu um erro, por favor, tente novamente mais tarde!"],
-      });
-      return;
-    }
+  async getAllPhotos(req, res) {
+    const photos = await PhotoRepository.find({})
+      .sort([["createdAt", -1]])
+      .exec();
 
-    await PhotoRepository.findByIdAndDelete(photo._id);
-
-    res.status(200).json({
-      id: photo._id,
-      message: "Foto excluida com sucesso!",
-    });
+    res.status(200).json(photos);
   }
 }
 

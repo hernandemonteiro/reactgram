@@ -16,4 +16,8 @@ photoRoutes.post(
   PhotoController.insertPhoto
 );
 
+photoRoutes.delete("/:id", authGuard, PhotoController.deletePhoto);
+
+photoRoutes.get("/", authGuard, PhotoController.getAllPhotos);
+
 export default photoRoutes;
