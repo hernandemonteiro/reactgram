@@ -6,3 +6,7 @@ body {
   background-color: #121212;
   color: #fafafa;
 }
+
+.container {
+  min-height: 70vh;
+}
