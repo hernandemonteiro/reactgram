@@ -46,4 +46,6 @@ photoRoutes.put(
   PhotoController.commentPhoto
 );
 
+photoRoutes.get("/search", authGuard, PhotoController.searchPhotos);
+
 export default photoRoutes;
